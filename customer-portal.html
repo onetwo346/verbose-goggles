@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ShipSmart - Customer Portal</title>
+    <style>
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #e0f7fa;
+        color: #333;
+        margin: 0;
+        padding: 0;
+      }
+      .header {
+        background-color: #00796b;
+        color: white;
+        padding: 20px;
+        text-align: center;
+      }
+      .header img {
+        max-width: 150px;
+        height: auto;
+      }
+      .container {
+        max-width: 900px;
+        margin: 30px auto;
+        background: white;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+      }
+      h1,
+      h2 {
+        color: #004d40;
+      }
+      .button {
+        background-color: #00796b;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+        margin-top: 10px;
+      }
+      .button:hover {
+        background-color: #004d40;
+      }
+      input,
+      select {
+        padding: 10px;
+        margin-top: 10px;
+        width: 100%;
+        box-sizing: border-box;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        font-size: 16px;
+      }
+      .tracking-info {
+        margin-top: 30px;
+      }
+      .tracking-section {
+        margin-top: 20px;
+      }
+      .footer {
+        text-align: center;
+        padding: 20px;
+        background-color: #00796b;
+        color: white;
+        border-top: 5px solid #004d40;
+      }
+      .footer-content {
+        margin-bottom: 20px;
+      }
+      .footer-content a {
+        color: #a5d6a7;
+        text-decoration: none;
+        font-weight: bold;
+      }
+      .footer-content a:hover {
+        text-decoration: underline;
+      }
+      .service-info {
+        margin-top: 30px;
+      }
+      .service-info p {
+        margin-bottom: 20px;
+      }
+      .service-details {
+        display: none;
+        margin-top: 20px;
+        padding: 20px;
+        background: #f1f8f4;
+        border-radius: 5px;
+        box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+      }
+      .service-info img {
+        max-width: 100%;
+        height: auto;
+        cursor: pointer;
+        border-radius: 5px;
+        margin-top: 10px;
+      }
+      .details-button {
+        background-color: #004d40;
+        color: white;
+        border: none;
+        padding: 10px;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-top: 10px;
+      }
+      .details-button:hover {
+        background-color: #00251a;
+      }
+      .overview {
+        margin-top: 40px;
+        padding: 20px;
+        background-color: #e0f2f1;
+        border-radius: 10px;
+        box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+      }
+      .overview h2 {
+        color: #004d40;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <img src="logo.jpg" alt="ShipSmart Logo" />
+      <h1>ShipSmart</h1>
+      <h2>Customer Portal</h2>
+    </div>
+    <div class="container">
+      <p>
+        Welcome to ShipSmart! We provide a range of shipping services to meet
+        your needs. Whether you’re looking for fast delivery, cost-effective
+        solutions, or flexible transport options, we’ve got you covered. Our
+        services include air cargo, sea cargo, and truck cargo. Explore our
+        options to find the best fit for your shipping requirements.
+      </p>
+      <p>
+        Our air cargo service offers rapid delivery for time-sensitive
+        shipments. We utilize a network of trusted airlines to ensure your
+        packages reach their destination as quickly as possible. With real-time
+        tracking, you can monitor your shipment every step of the way.
+      </p>
+      <p>
+        For large volumes and bulky items, our sea cargo service is the most
+        economical choice. It’s perfect for non-urgent shipments and
+        international trade. Our vessels are equipped to handle a wide range of
+        cargo types, and we offer secure loading and transport to ensure your
+        goods arrive safely.
+      </p>
+      <p>
+        Our truck cargo service is designed for flexible, local, and regional
+        deliveries. Whether you need door-to-door service or scheduled pickups
+        and drop-offs, our fleet of trucks is ready to handle your shipments
+        with care.
+      </p>
+      <p>
+        We pride ourselves on exceptional customer service and a commitment to
+        reliability. Our tracking system provides updates on your shipment’s
+        progress, so you’re never left in the dark. Feel free to contact us if
+        you have any questions or need assistance with your shipments.
+      </p>
+      <p>
+        Browse through our shipping options below to learn more about each
+        service. Click on the images to see detailed descriptions and discover
+        which shipping method best suits your needs.
+      </p>
+      <div class="tracking-section">
+        <h2>Track Your Package</h2>
+        <input
+          type="text"
+          id="trackingNumber"
+          placeholder="Enter your tracking number"
+        />
+        <button class="button" onclick="trackPackage()">Track Package</button>
+        <div id="trackingResults" class="tracking-info"></div>
+      </div>
+      <div class="service-info">
+        <img
+          src="plane.jpg"
+          alt="Cargo Plane"
+          onclick="showServiceDetails('airCargo')"
+        />
+        <div id="airCargo" class="service-details">
+          <h4>Air Cargo</h4>
+          <p>
+            Our air cargo service provides fast and reliable international
+            delivery options. With our extensive network of airlines, we ensure
+            quick and secure transport of your packages. Average delivery times
+            range from 1 to 5 days, depending on the destination.
+          </p>
+          <p>
+            Ideal for urgent and time-sensitive shipments, air cargo is a
+            premium option that guarantees swift delivery. We offer real-time
+            tracking, so you can monitor your shipment's progress from departure
+            to arrival.
+          </p>
+          <p>
+            <strong>Advantages:</strong> Fastest delivery, high reliability,
+            suitable for high-value items, and excellent tracking capabilities.
+          </p>
+          <p>
+            <strong>Disadvantages:</strong> Higher cost compared to other
+            shipping methods, limited capacity for oversized items.
+          </p>
+          <p>
+            <strong>Recommended For:</strong> Expedited shipments, international
+            deliveries, and high-priority cargo.
+          </p>
+          <button
+            class="details-button"
+            onclick="hideServiceDetails('airCargo')"
+          >
+            Close
+          </button>
+        </div>
+        <img
+          src="ship.jpg"
+          alt="Cargo Ship"
+          onclick="showServiceDetails('seaCargo')"
+        />
+        <div id="seaCargo" class="service-details">
+          <h4>Sea Cargo</h4>
+          <p>
+            Sea cargo is the most cost-effective method for transporting large
+            and bulky shipments. We provide efficient maritime transportation
+            with an average delivery time of 20 to 40 days, depending on the
+            route and destination.
+          </p>
+          <p>
+            Perfect for non-urgent and bulk shipments, sea cargo offers
+            significant cost savings for large quantities of goods. We ensure
+            safe and secure loading, transport, and unloading of your cargo.
+          </p>
+          <p>
+            <strong>Advantages:</strong> Economical for large volumes, suitable
+            for oversized items, and less time-sensitive.
+          </p>
+          <p>
+            <strong>Disadvantages:</strong> Longer transit times, potential for
+            weather-related delays, and less frequent updates.
+          </p>
+          <p>
+            <strong>Recommended For:</strong> Bulk shipments, non-urgent
+            deliveries, and international trade.
+          </p>
+          <button
+            class="details-button"
+            onclick="hideServiceDetails('seaCargo')"
+          >
+            Close
+          </button>
+        </div>
+        <img
+          src="truck.jpg"
+          alt="Cargo Truck"
+          onclick="showServiceDetails('truckCargo')"
+        />
+        <div id="truckCargo" class="service-details">
+          <h4>Truck Cargo</h4>
+          <p>
+            Our trucking service provides flexible and timely delivery options
+            for local and regional shipments. With an average delivery time of 1
+            to 7 days, our trucks offer reliable transport for a variety of
+            cargo types.
+          </p>
+          <p>
+            Ideal for shipments within the same country or neighboring regions,
+            our truck cargo service ensures safe and efficient transport with
+            customizable delivery schedules.
+          </p>
+          <p>
+            <strong>Advantages:</strong> Flexible scheduling, suitable for local
+            and regional deliveries, and cost-effective for short distances.
+          </p>
+          <p>
+            <strong>Disadvantages:</strong> Limited to road transport, potential
+            for delays due to traffic or weather.
+          </p>
+          <p>
+            <strong>Recommended For:</strong> Local deliveries, scheduled
+            shipments, and regional transport.
+          </p>
+          <button
+            class="details-button"
+            onclick="hideServiceDetails('truckCargo')"
+          >
+            Close
+          </button>
+        </div>
+      </div>
+      <div class="overview">
+        <h2>Why Choose ShipSmart?</h2>
+        <p>
+          At ShipSmart, we are dedicated to providing exceptional shipping
+          services tailored to your needs. Our extensive range of shipping
+          options ensures that you can find the perfect solution for every type
+          of shipment, whether it's urgent or non-urgent, local or
+          international.
+        </p>
+        <p>
+          Our user-friendly website allows you to easily track your packages and
+          get real-time updates on their status. With our reliable tracking
+          system, you can stay informed and have peace of mind knowing exactly
+          where your shipment is at all times.
+        </p>
+        <p>
+          We pride ourselves on our commitment to customer satisfaction. Our
+          team of professionals is always ready to assist you with any questions
+          or concerns you may have. Whether you're a new or returning customer,
+          we strive to make your shipping experience smooth and hassle-free.
+        </p>
+        <p>
+          Welcome to ShipSmart! We look forward to serving you and becoming your
+          trusted partner in shipping. Explore our services, track your
+          packages, and enjoy the convenience of top-notch shipping solutions.
+        </p>
+        <p>
+          For any assistance or inquiries, feel free to contact us at
+          <a href="mailto:shipsmart0000@gmail.com">shipsmart0000@gmail.com</a>.
+        </p>
+        <p>
+          Thank you for choosing ShipSmart. We are excited to have you on board
+          and to help you with all your shipping needs.
+        </p>
+      </div>
+    </div>
+    <div class="footer">
+      <div class="footer-content">
+        <p>
+          Contact us at:
+          <a href="mailto:shipsmart0000@gmail.com">shipsmart0000@gmail.com</a>
+        </p>
+        <p>Follow us on social media:</p>
+        <a href="#">Facebook</a> | <a href="#">Twitter</a> |
+        <a href="#">Instagram</a>
+      </div>
+      <p>&copy; 2024 ShipSmart. All rights reserved.</p>
+      <p>
+        For more information, visit our <a href="#">FAQs</a> or
+        <a href="#">Support</a> pages.
+      </p>
+    </div>
+    <script>
+      function trackPackage() {
+        var trackingNumber = document.getElementById("trackingNumber").value;
+        var trackingResults = document.getElementById("trackingResults");
+        // Mock data for demonstration purposes
+        var mockData = {
+          123456:
+            "Your package is in transit and expected to arrive in 3 days.",
+          654321: "Your package has been delivered.",
+          789012: "Your package is currently out for delivery.",
+        };
+        trackingResults.innerHTML =
+          mockData[trackingNumber] || "Tracking number not found.";
+      }
+
+      function showServiceDetails(serviceId) {
+        var services = document.querySelectorAll(".service-details");
+        services.forEach((service) => {
+          service.style.display = "none";
+        });
+        document.getElementById(serviceId).style.display = "block";
+      }
+
+      function hideServiceDetails(serviceId) {
+        document.getElementById(serviceId).style.display = "none";
+      }
+    </script>
+  </body>
+</html>
